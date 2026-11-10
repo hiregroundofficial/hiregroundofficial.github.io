@@ -95,7 +95,7 @@ function careerCard(c) {
   const med = medianSalary(c);
   const outlook = c.jobDemand ? c.jobDemand.outlook : null;
   return `
-  <a class="card career-card" href="#/career/${c.id}">
+  <a class="card career-card" href="/careers/${c.id}/">
     <span class="cc-cat">${c.category}</span>
     <h3>${c.careerName}</h3>
     <p class="cc-desc">${c.description}</p>
@@ -117,7 +117,7 @@ function renderCareersPage() {
   <div class="page-head"><div class="wrap">
     <div class="search-hero">
       <div class="blob blob-1"></div>
-      <div class="breadcrumb" style="justify-content:center;"><a href="#/">Home</a><span>\u203A</span><span>Career Search</span></div>
+      <div class="breadcrumb" style="justify-content:center;"><a href="/">Home</a><span>\u203A</span><span>Career Search</span></div>
       <h1>What career are you interested in?</h1>
       <p class="lead" style="margin:0 auto;">Search real career profiles built from official Canadian sources, with the education pathway, salary data, and day-to-day reality for each one.</p>
       <div class="search-wrap">
@@ -191,7 +191,7 @@ function bindCareersPage() {
       ac.querySelectorAll(".ac-item").forEach((el) => {
         el.addEventListener("mousedown", (e) => {
           e.preventDefault();
-          navigateTo("#/career/" + acItems[parseInt(el.dataset.i, 10)].id);
+          navigateTo("/careers/" + acItems[parseInt(el.dataset.i, 10 + "/")].id);
         });
       });
     }
@@ -210,7 +210,7 @@ function bindCareersPage() {
       items.forEach((el, i) => el.classList.toggle("hl", i === acIndex));
     } else if (e.key === "Enter") {
       e.preventDefault();
-      if (acIndex >= 0 && acItems[acIndex]) navigateTo("#/career/" + acItems[acIndex].id);
+      if (acIndex >= 0 && acItems[acIndex]) navigateTo("/careers/" + acItems[acIndex].id + "/");
       else doSearch();
     } else if (e.key === "Escape") closeAC();
   });
@@ -282,7 +282,7 @@ function renderCareerProfile(id) {
   if (!c) {
     return `<section class="block"><div class="wrap"><div class="not-found">
       <h1>Career not found</h1><p class="muted">That profile doesn't exist (yet). New careers are added regularly.</p>
-      <a href="#/careers" class="btn btn-dark">Back to Career Search</a></div></div></section>`;
+      <a href="/careers/" class="btn btn-dark">Back to Career Search</a></div></div></section>`;
   }
   const med = medianSalary(c);
   const salarySrc = findSource(c, ["job bank", "statistics canada"]);
@@ -316,7 +316,7 @@ function renderCareerProfile(id) {
   return `
   <div class="profile-hero"><div class="wrap"><div class="profile-hero-inner">
     <div class="blob blob-1"></div>
-    <a href="#/careers" class="back-link" style="color:var(--orange);">\u2190 Back to search</a>
+    <a href="/careers/" class="back-link" style="color:var(--orange);">\u2190 Back to search</a>
     <h1>${c.careerName}</h1>
     <p class="desc">${c.description}</p>
     <div class="profile-tags">
@@ -429,7 +429,7 @@ function renderCareerProfile(id) {
       <h2>If you're interested in ${c.careerName}, also explore</h2>
       <div class="related-grid" style="margin-top:1.6rem;">
         ${related.map((r) => `
-          <a class="card related-card" href="#/career/${r.id}">
+          <a class="card related-card" href="/careers/${r.id}/">
             <span class="cc-cat">${r.category}</span><h3>${r.careerName}</h3>
             <span class="go" style="font-size:0.9rem;">View profile \u2192</span>
           </a>`).join("")}
