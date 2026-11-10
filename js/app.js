@@ -1,7 +1,7 @@
 /* ============================================================
    THE HIRE GROUND, app shell: router + pages
-   Hash routes: #/  #/resources  #/resource/:slug  #/quiz
-                #/careers  #/career/:id  #/faq
+   Path routes: /  /resources/  /resources/:slug  /quiz/
+                /careers/  /careers/:id  /faq/
    ============================================================ */
 
 function iconSvg(name) {
@@ -34,8 +34,8 @@ function renderHome() {
         <h1>Your career starts somewhere. <span class="hl">Start here.</span></h1>
         <p class="lead">The Hire Ground helps the next generation understand the world of work, exploring careers, building real skills, and feeling ready for what's next.</p>
         <div class="hero-ctas">
-          <a href="#/quiz" class="btn btn-orange btn-lg">Take the Readiness Quiz <span class="arrow">\u2192</span></a>
-          <a href="#/careers" class="btn btn-ghost btn-lg">Explore Careers</a>
+          <a href="/quiz/" class="btn btn-orange btn-lg">Take the Readiness Quiz <span class="arrow">\u2192</span></a>
+          <a href="/careers/" class="btn btn-ghost btn-lg">Explore Careers</a>
         </div>
         <div class="hero-proof">
           <div class="avatar-stack" aria-hidden="true">
@@ -124,17 +124,17 @@ function renderHome() {
       <h2>Pick your next step</h2>
     </div>
     <div class="grid-4">
-      <a class="card explore-card" href="#/quiz"><span class="tag">5 min</span><div class="icon-chip soft" style="margin-bottom:1.2rem;">${iconSvg("target")}</div><h3>Career Readiness Quiz</h3><p class="muted">25 questions. Discover exactly what to work on next.</p><span class="go">Start the quiz \u2192</span></a>
-      <a class="card explore-card" href="#/careers"><span class="tag">36 profiles</span><div class="icon-chip soft" style="margin-bottom:1.2rem;">${iconSvg("compass")}</div><h3>Career Search Tool</h3><p class="muted">Salaries, pathways, and day-to-day reality for real careers.</p><span class="go">Search careers \u2192</span></a>
-      <a class="card explore-card" href="#/resources"><span class="tag">4 guides</span><div class="icon-chip soft" style="margin-bottom:1.2rem;">${iconSvg("doc")}</div><h3>Resources</h3><p class="muted">Free guides: resumes, interviews, LinkedIn, planning.</p><span class="go">Read the guides \u2192</span></a>
-      <a class="card explore-card" href="#/faq"><span class="tag">10 answers</span><div class="icon-chip soft" style="margin-bottom:1.2rem;">${iconSvg("chat")}</div><h3>FAQ</h3><p class="muted">Who we are, what we offer, and how to get involved.</p><span class="go">Read the FAQ \u2192</span></a>
+      <a class="card explore-card" href="/quiz/"><span class="tag">5 min</span><div class="icon-chip soft" style="margin-bottom:1.2rem;">${iconSvg("target")}</div><h3>Career Readiness Quiz</h3><p class="muted">25 questions. Discover exactly what to work on next.</p><span class="go">Start the quiz \u2192</span></a>
+      <a class="card explore-card" href="/careers/"><span class="tag">36 profiles</span><div class="icon-chip soft" style="margin-bottom:1.2rem;">${iconSvg("compass")}</div><h3>Career Search Tool</h3><p class="muted">Salaries, pathways, and day-to-day reality for real careers.</p><span class="go">Search careers \u2192</span></a>
+      <a class="card explore-card" href="/resources/"><span class="tag">4 guides</span><div class="icon-chip soft" style="margin-bottom:1.2rem;">${iconSvg("doc")}</div><h3>Resources</h3><p class="muted">Free guides: resumes, interviews, LinkedIn, planning.</p><span class="go">Read the guides \u2192</span></a>
+      <a class="card explore-card" href="/faq/"><span class="tag">10 answers</span><div class="icon-chip soft" style="margin-bottom:1.2rem;">${iconSvg("chat")}</div><h3>FAQ</h3><p class="muted">Who we are, what we offer, and how to get involved.</p><span class="go">Read the FAQ \u2192</span></a>
     </div>
   </div></section>
 
   <div class="cta-banner"><div class="cta-inner">
     <h2>Not sure where to start?</h2>
     <p>Take the 25-question Career Readiness Quiz and get a personalized breakdown, plus the exact resources that match your gaps.</p>
-    <a href="#/quiz" class="btn btn-dark btn-lg">Take the Quiz <span class="arrow">\u2192</span></a>
+    <a href="/quiz/" class="btn btn-dark btn-lg">Take the Quiz <span class="arrow">\u2192</span></a>
   </div></div>`;
 }
 
@@ -156,7 +156,7 @@ function renderFaq() {
   return `
   <div class="page-head"><div class="wrap"><div class="page-head-inner">
     <div class="blob blob-1"></div>
-    <div class="breadcrumb"><a href="#/">Home</a><span>\u203A</span><span>FAQ</span></div>
+    <div class="breadcrumb"><a href="/">Home</a><span>\u203A</span><span>FAQ</span></div>
     <h1>Questions? Good. We like those.</h1>
     <p class="lead">Everything you might want to know about The Hire Ground, what we do, who we're for, and how to get involved.</p>
   </div></div></div>
@@ -170,7 +170,7 @@ function renderFaq() {
     </div>
     <div class="center" style="margin-top:3rem;">
       <p class="muted">Still curious about something?</p>
-      <a href="#/resources" class="btn btn-dark">Browse our resources <span class="arrow">\u2192</span></a>
+      <a href="/resources/" class="btn btn-dark">Browse our resources <span class="arrow">\u2192</span></a>
     </div>
   </div></section>`;
 }
@@ -178,7 +178,7 @@ function renderFaq() {
 /* ================= RESOURCES HUB ================= */
 function renderResourcesHub() {
   const cards = RESOURCES.map((r) => `
-    <a class="card resource-card" href="#/resource/${r.slug}">
+    <a class="card resource-card" href="/resources/${r.slug}/">
       <div class="icon-chip soft">${iconSvg(r.icon)}</div>
       <div class="resource-card-copy">
         <div class="meta"><span>${r.level}</span><span>\u00B7</span><span>${r.readTime}</span></div>
@@ -190,7 +190,7 @@ function renderResourcesHub() {
   return `
   <div class="page-head"><div class="wrap"><div class="page-head-inner">
     <div class="blob blob-1"></div>
-    <div class="breadcrumb"><a href="#/">Home</a><span>\u203A</span><span>Resources</span></div>
+    <div class="breadcrumb"><a href="/">Home</a><span>\u203A</span><span>Resources</span></div>
     <h1>Everything you need to get career-ready.</h1>
     <p class="lead">Free, plain-language guides, plus a quiz that points you to exactly the right ones. Start anywhere; they all connect.</p>
   </div></div></div>
@@ -367,7 +367,7 @@ function renderArticle(slug) {
   return `
   <div class="article-hero"><div class="wrap"><div class="article-hero-inner">
     <div class="blob blob-1"></div>
-    <div class="breadcrumb" style="margin-bottom:1.4rem;"><a href="#/">Home</a><span>\u203A</span><a href="#/resources">Resources</a><span>\u203A</span><span>${r.title}</span></div>
+    <div class="breadcrumb" style="margin-bottom:1.4rem;"><a href="/">Home</a><span>\u203A</span><a href="/resources/">Resources</a><span>\u203A</span><span>${r.title}</span></div>
     <h1>${r.title}</h1>
     <p class="subtitle">${r.subtitle}</p>
     <blockquote class="article-quote">${r.quote}</blockquote>
@@ -377,8 +377,8 @@ function renderArticle(slug) {
     ${r.sections.map(renderSection).join("")}
     ${renderGuideQuiz(slug)}
     <div class="article-nav">
-      <a href="#/resource/${prev.slug}"><span class="dir">\u2190 Previous guide</span><strong>${prev.title}</strong></a>
-      <a href="#/resource/${next.slug}" class="next"><span class="dir">Next guide \u2192</span><strong>${next.title}</strong></a>
+      <a href="/resources/${prev.slug}/"><span class="dir">\u2190 Previous guide</span><strong>${prev.title}</strong></a>
+      <a href="/resources/${next.slug}/" class="next"><span class="dir">Next guide \u2192</span><strong>${next.title}</strong></a>
     </div>
   </div></div>`;
 }
@@ -397,7 +397,7 @@ function bindArticle() {
 function notFound(what) {
   return `<section class="block"><div class="wrap"><div class="not-found">
     <h1>That ${what} wasn't found</h1><p class="muted">It may have moved, or it may not exist yet.</p>
-    <a href="#/" class="btn btn-dark">Back to Home</a></div></div></section>`;
+    <a href="/" class="btn btn-dark">Back to Home</a></div></div></section>`;
 }
 
 /* ================= ROUTER ================= */
@@ -408,11 +408,11 @@ function setActiveNav(route) {
   links.forEach((a) => {
     const href = a.getAttribute("href");
     const match =
-      (route === "home" && href === "#/") ||
-      (route === "resources" && href.startsWith("#/resources")) ||
-      (route === "quiz" && href === "#/quiz") ||
-      (route === "careers" && href.startsWith("#/careers")) ||
-      (route === "faq" && href === "#/faq");
+      (route === "home" && href === "/") ||
+      (route === "resources" && href.startsWith("/resources")) ||
+      (route === "quiz" && href === "/quiz/") ||
+      (route === "careers" && href.startsWith("/careers")) ||
+      (route === "faq" && href === "/faq/");
     a.classList.toggle("active", !!match);
   });
 }
@@ -426,10 +426,28 @@ function setPageMetadata(title, description) {
   if (descriptionTag) descriptionTag.setAttribute("content", description);
 }
 
-function route(hashArg) {
-  const hash = typeof hashArg === "string" && hashArg.startsWith("#") ? hashArg : (location.hash || "#/");
-  const path = hash.replace(/^#\/?/, "");
-  const parts = path.split("/");
+/* Canonical path for a route, e.g. "" (home), "resources", "resources/career-planning",
+   "quiz", "careers", "careers/software-developer", "faq". Accepts a path ("/careers/")
+   or a legacy hash ("#/careers"), and also reads the current URL when given nothing. */
+function routePath(input) {
+  let raw = "";
+  if (typeof input === "string" && input) raw = input;
+  else if (location.hash && location.hash.startsWith("#/")) raw = location.hash;
+  else raw = location.pathname || "/";
+  if (raw.startsWith("#/")) raw = raw.slice(1);
+  if (raw.startsWith("#")) raw = raw.slice(1);
+  raw = raw.replace(/^\/+/, "").replace(/\/+$/, "");
+  if (raw === "index.html") raw = "";
+  return raw;
+}
+
+function route(pathArg) {
+  const path = routePath(pathArg);
+  const parts = path ? path.split("/") : [""];
+  // Legacy hash routes used singular names (#/career/:id, #/resource/:slug);
+  // path routes use plural names (/careers/:id, /resources/:slug).
+  if (parts[0] === "career") parts[0] = "careers";
+  if (parts[0] === "resource") parts[0] = "resources";
   window.scrollTo({ top: 0 });
 
   if (path === "" || path === "/") {
@@ -442,7 +460,7 @@ function route(hashArg) {
     setPageMetadata("Free Career Resources | The Hire Ground", "Free guides on resumes, interviews, LinkedIn, and career planning from The Hire Ground, a student-run nonprofit.");
     setActiveNav("resources");
   }
-  else if (parts[0] === "resource" && parts[1]) {
+  else if (parts[0] === "resources" && parts[1]) {
     const guide = RESOURCES.find((resource) => resource.slug === parts[1]);
     app.innerHTML = renderArticle(parts[1]);
     if (guide) setPageMetadata(`${guide.title} | The Hire Ground`, `A free The Hire Ground guide: ${guide.title}.`);
@@ -468,7 +486,7 @@ function route(hashArg) {
     bindCareersPage();
     setActiveNav("careers");
   }
-  else if (parts[0] === "career" && parts[1]) {
+  else if (parts[0] === "careers" && parts[1]) {
     const career = careerById(parts[1]);
     app.innerHTML = renderCareerProfile(parts[1]);
     if (career) setPageMetadata(`${career.careerName} | The Hire Ground`, `Explore the ${career.careerName} career profile: education path, salary data, and day-to-day reality, from official Canadian sources.`);
@@ -513,37 +531,42 @@ if (navToggle && mainNav) {
 /*
  * Route internal links ourselves instead of relying on the browser to emit a
  * fragment-change event after every tap. Some embedded webviews update the
- * visible hash without reliably delivering that event, which left the current
+ * visible URL without reliably delivering that event, which left the current
  * page on screen. Keeping navigation in one delegated handler also covers
- * links rendered into #app after the initial load.
+ * links rendered into #app after the initial load. Links use real paths
+ * (e.g. /careers/software-developer/); legacy #/... links are converted.
  */
-function navigateTo(href) {
-  const nextHash = typeof href === "string" && href.startsWith("#/") ? href : "#/";
+function pathFor(href) {
+  if (typeof href !== "string") return "/";
+  if (href.startsWith("#/")) href = href.slice(1);
+  if (href === "#" || href === "") return "/";
+  if (!href.startsWith("/")) return "/";
+  return href.endsWith("/") ? href : href + "/";
+}
 
-  if (location.hash !== nextHash) {
+function navigateTo(href) {
+  const nextPath = pathFor(href);
+  if (location.pathname !== nextPath) {
     try {
-      history.pushState(null, "", nextHash);
+      history.pushState(null, "", nextPath);
     } catch (error) {
-      try {
-        location.hash = nextHash;
-      } catch (hashError) {
-        // The viewer may block URL changes entirely; route below still renders.
-      }
+      location.pathname = nextPath;
     }
   }
-
-  // Render synchronously as well as listening for hashchange below. Some hosted
-  // webviews update the fragment but never deliver the hashchange event, which
-  // otherwise leaves the current page on screen after a tap.
-  route(nextHash);
+  // Render synchronously as well as listening for popstate below. Some hosted
+  // webviews update the URL but never deliver the event, which otherwise
+  // leaves the current page on screen after a tap.
+  route(nextPath);
 }
 
 document.addEventListener("click", (event) => {
   if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-  const link = event.target.closest("a[href^='#/']");
+  const link = event.target.closest("a[href^='/'], a[href^='#/']");
   if (!link || link.target === "_blank" || link.hasAttribute("download")) return;
+  const href = link.getAttribute("href");
+  if (href.startsWith("http") || href.startsWith("#app")) return;
   event.preventDefault();
-  navigateTo(link.getAttribute("href"));
+  navigateTo(href);
 }, true);
 
 window.addEventListener("hashchange", () => route());

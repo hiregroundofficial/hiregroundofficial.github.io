@@ -307,7 +307,7 @@ function renderQuizIntro() {
   return `
   <div class="page-head"><div class="wrap">
     <div class="page-head-inner">
-      <div class="breadcrumb"><a href="#/">Home</a><span>\u203A</span><span>Career Readiness Quiz</span></div>
+      <div class="breadcrumb"><a href="/">Home</a><span>\u203A</span><span>Career Readiness Quiz</span></div>
       <h1>What do you actually need to work on?</h1>
       <p class="lead">Answer 25 quick questions across career planning, resumes, interviews, and LinkedIn. You'll get a breakdown of your strengths, and exactly which resources to check out next.</p>
     </div>
@@ -342,7 +342,7 @@ function renderQuizQuestion() {
   return `
   <div class="page-head"><div class="wrap">
     <div class="page-head-inner">
-      <div class="breadcrumb"><a href="#/">Home</a><span>\u203A</span><a href="#/quiz">Quiz</a><span>\u203A</span><span>Question ${i + 1}</span></div>
+      <div class="breadcrumb"><a href="/">Home</a><span>\u203A</span><a href="/quiz/">Quiz</a><span>\u203A</span><span>Question ${i + 1}</span></div>
     </div>
   </div></div>
   <section class="block" style="padding-top:0"><div class="wrap">
@@ -451,7 +451,7 @@ function renderQuizResults() {
     <div class="cat-row ${weak ? "weak" : ""}">
       <div class="cat-head"><strong>${c.name}</strong><span>${s.right}/${s.total} \u00B7 ${p}%</span></div>
       <div class="cat-bar"><i style="width:${p}%"></i></div>
-      ${weak ? `<div class="rec-list"><a class="card rec-card" href="#/resource/${res.slug}">
+      ${weak ? `<div class="rec-list"><a class="card rec-card" href="/resources/${res.slug}/">
           <div class="icon-chip soft">${iconSvg(res.icon)}</div>
           <div><strong>Recommended: ${res.title}</strong><br><span class="muted">${res.subtitle}, ${res.readTime}</span></div>
           <span class="go">Read the guide \u2192</span>
@@ -467,7 +467,7 @@ function renderQuizResults() {
   return `
   <div class="page-head"><div class="wrap">
     <div class="page-head-inner">
-      <div class="breadcrumb"><a href="#/">Home</a><span>\u203A</span><a href="#/quiz">Quiz</a><span>\u203A</span><span>Results</span></div>
+      <div class="breadcrumb"><a href="/">Home</a><span>\u203A</span><a href="/quiz/">Quiz</a><span>\u203A</span><span>Results</span></div>
       <h1>Here's where you stand.</h1>
     </div>
   </div></div>
@@ -494,13 +494,13 @@ function renderQuizResults() {
         <div class="card center" style="background:var(--ink);color:#fff;border:none;">
           <h3 style="color:var(--orange);">Clean sweep.</h3>
           <p style="color:#cfc9bd;margin-bottom:1.5rem;">You scored 70%+ in every area. Try the Career Search Tool next to explore where these skills can take you.</p>
-          <a href="#/careers" class="btn btn-orange">Explore Careers <span class="arrow">\u2192</span></a>
+          <a href="/careers/" class="btn btn-orange">Explore Careers <span class="arrow">\u2192</span></a>
         </div>` : `
         <div class="card" style="background:var(--orange-soft);border-color:var(--orange);">
           <h3>Your focus list</h3>
           <p class="muted" style="margin-bottom:1.2rem;">Work through ${weakCats.length === 1 ? "this resource" : "these resources"} next, then retake the quiz to watch your score climb:</p>
           <div style="display:flex;gap:0.8rem;flex-wrap:wrap;">
-            ${weakCats.map((c) => { const r = RESOURCES.find((x) => x.slug === c.resource); return `<a href="#/resource/${r.slug}" class="btn btn-dark btn-sm">${r.title}</a>`; }).join("")}
+            ${weakCats.map((c) => { const r = RESOURCES.find((x) => x.slug === c.resource); return `<a href="/resources/${r.slug}/" class="btn btn-dark btn-sm">${r.title}</a>`; }).join("")}
             <button class="btn btn-ghost btn-sm" id="quizRetake">Retake the Quiz</button>
           </div>
         </div>`}
