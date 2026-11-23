@@ -28,7 +28,7 @@ import vm from "node:vm";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const SITE = "https://hiregroundofficial.github.io";
-const LASTMOD = "2026-11-10";
+const LASTMOD = "2026-11-22";
 
 // ---------- minimal DOM stub ----------
 function makeEl() {
@@ -140,7 +140,7 @@ function writePage(relPath, html) {
 
 // ---------- page list ----------
 const HOME_TITLE = "The Hire Ground | Your career starts somewhere. Start here.";
-const HOME_DESC = "The Hire Ground is a student-run nonprofit helping young people understand careers, the workplace, and what it takes to get ahead. Free resources, a career readiness quiz, and an interactive career search tool.";
+const HOME_DESC = "The Hire Ground is a student-run nonprofit helping young people explore careers and build workplace skills. Free guides, a readiness quiz, and career search.";
 const pages = []; // {path, file, priority, changefreq}
 
 function addPage(path, file, title, description, mainHtml, extraLd, priority, changefreq) {
@@ -157,11 +157,19 @@ addPage("/resources/", "resources/index.html",
   "Free guides on resumes, interviews, LinkedIn, and career planning from The Hire Ground, a student-run nonprofit.",
   renderResourcesHub(), "", "0.9", "weekly");
 
+// Meta descriptions for guides (<=160 chars for Bing/Google display; r.summary is longer and is used on-page)
+const GUIDE_META = {
+  "career-planning": "Learn career planning step by step: understand yourself, explore real careers, read the job market, and set SMART goals. A free Hire Ground guide.",
+  "creating-a-resume": "What belongs on a resume, how to write bullet points that show results, and how to beat applicant tracking systems. A free Hire Ground guide.",
+  "ace-the-interview": "Understand what interview questions really ask, answer with the STAR method, handle tricky questions, and follow up like a pro. Free guide.",
+  "linkedin-101": "Build a LinkedIn profile that stands out, grow a helpful network, and use the platform safely, from headline to informational interviews.",
+};
+
 // guides
 for (const r of RESOURCES) {
   addPage(`/resources/${r.slug}/`, `resources/${r.slug}/index.html`,
     `${r.title} | The Hire Ground`,
-    `A free The Hire Ground guide: ${r.title}. ${r.summary}`,
+    GUIDE_META[r.slug] || `A free The Hire Ground guide: ${r.title}. ${r.summary}`,
     renderArticle(r.slug),
     articleLd({ title: `${r.title} | The Hire Ground`, description: r.summary, path: `/resources/${r.slug}/` }),
     "0.8", "monthly");
